@@ -1,0 +1,5 @@
+Pyrogram==2.0.96
+TgCrypto==1.1.1
+uvloop==0.17.0
+imdbpy==2022.7.9
+notion-client==2.0.0
