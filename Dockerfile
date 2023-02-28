@@ -1,6 +1,8 @@
 FROM python:3.9-slim as compiler
 ENV PYTHONUNBUFFERED 1
 
+RUN apt-get update && apt-get -y install gcc
+
 WORKDIR /app/
 
 RUN python -m venv /opt/venv
@@ -16,6 +18,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 
 COPY main.py /app/
-COPY telegram.session /app/
+COPY model /app/model
+COPY integration /app/integration
 
 ENTRYPOINT ["python3", "/app/main.py"]

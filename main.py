@@ -12,10 +12,9 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S')
 
 MovieBot = Client(
-    "telegram",
+    "bot",
     bot_token=os.environ["TELEGRAM_BOT_TOKEN"],
-    api_id=int(os.environ["TELEGRAM_API_ID"]),
-    api_hash=os.environ["TELEGRAM_API_HASH"]
+    api_id=int(os.environ["TELEGRAM_API_ID"])
 )
 
 IMDb = IMDbClient.IMDbClient()
