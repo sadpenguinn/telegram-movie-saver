@@ -18,4 +18,5 @@ class IMDbClient:
                            movie['country'],
                            movie['year'],
                            movie['cover url'],
-                           movie['rating'])
+                           movie['rating'],
+                           0)

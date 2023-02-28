@@ -17,6 +17,7 @@ class NotionClient:
             "Genre": {"multi_select": [{"name": g} for g in movie.genre]},
             "Country": {"multi_select": [{"name": c} for c in movie.country]},
             "IMDb Rating": {"number": movie.rating},
+            "Kinopoisk Rating": {"number": movie.kp_rating}
         }
 
         self.api.pages.create(parent={"database_id": self.database_id}, properties=new_page)

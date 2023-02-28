@@ -4,7 +4,7 @@ import os
 
 import telebot
 
-from integration import IMDbClient, NotionClient
+from integration import IMDbClient, KinopoiskClient, NotionClient
 
 logging.basicConfig(
     format='%(asctime)s %(levelname)-8s %(message)s',
@@ -14,6 +14,7 @@ logging.basicConfig(
 MovieBot = telebot.TeleBot(os.environ["TELEGRAM_BOT_TOKEN"], parse_mode=None)
 
 IMDb = IMDbClient.IMDbClient()
+Kinopoisk = KinopoiskClient.KinopoiskClient()
 Notion = NotionClient.NotionClient()
 
 
@@ -33,7 +34,9 @@ def text_message(message):
     title = get_title_from_query(title_query)
 
     movie = IMDb.search_movie(title_query)
-    movie.title_russian = title
+    title_russian, kp_rating = Kinopoisk.search_movie(title_query)
+    movie.title_russian = title_russian
+    movie.kp_rating = kp_rating
 
     Notion.add(movie)
 

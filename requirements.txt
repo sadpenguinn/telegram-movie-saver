@@ -1,3 +1,4 @@
 imdbpy==2022.7.9
 notion-client==2.0.0
 pyTelegramBotAPI==4.10.0
+kinopoiskpy==0.9.0
