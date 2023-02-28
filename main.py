@@ -2,7 +2,7 @@ import logging
 import re
 import os
 
-from pyrogram import Client, filters
+import telebot
 
 from integration import IMDbClient, NotionClient
 
@@ -11,11 +11,7 @@ logging.basicConfig(
     level=logging.INFO,
     datefmt='%Y-%m-%d %H:%M:%S')
 
-MovieBot = Client(
-    "bot",
-    bot_token=os.environ["TELEGRAM_BOT_TOKEN"],
-    api_id=int(os.environ["TELEGRAM_API_ID"])
-)
+MovieBot = telebot.TeleBot(os.environ["TELEGRAM_BOT_TOKEN"], parse_mode=None)
 
 IMDb = IMDbClient.IMDbClient()
 Notion = NotionClient.NotionClient()
@@ -29,9 +25,9 @@ def get_title_from_query(title_query: str):
         return title_query.title()
 
 
-@MovieBot.on_message(filters.text)
-async def new_movie(bot, update):
-    title_query = update.text.lower().title()
+@MovieBot.message_handler(func=lambda message: True)
+def text_message(message):
+    title_query = message.text.lower().title()
     logging.info('New query: {}'.format(title_query))
 
     title = get_title_from_query(title_query)
@@ -41,7 +37,7 @@ async def new_movie(bot, update):
 
     Notion.add(movie)
 
-    await update.reply_photo(photo=movie.cover_url, caption=f"""{movie.title}\n{movie.title_russian}""")
+    MovieBot.reply_to(message, f"""{movie.title}\n{movie.title_russian}""")
 
 
-MovieBot.run()
+MovieBot.infinity_polling()
