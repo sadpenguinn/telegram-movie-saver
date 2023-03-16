@@ -31,12 +31,13 @@ def text_message(message):
     title_query = message.text.lower().title()
     logging.info('New query: {}'.format(title_query))
 
-    title = get_title_from_query(title_query)
+    ##title = get_title_from_query(title_query)
 
     movie = IMDb.search_movie(title_query)
-    title_russian, kp_rating = Kinopoisk.search_movie(title_query)
-    movie.title_russian = title_russian
-    movie.kp_rating = kp_rating
+    title_russian, kp_rating, err = Kinopoisk.search_movie(title_query)
+    if err is None:
+        movie.title_russian = title_russian
+        movie.kp_rating = kp_rating
 
     Notion.add(movie)
 
