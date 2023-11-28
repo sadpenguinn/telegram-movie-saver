@@ -1,7 +1,5 @@
 # telegram-movie-saver
 
----
-
 ### Description
 
 Bot accept messages with film names,
