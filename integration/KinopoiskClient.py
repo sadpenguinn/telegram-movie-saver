@@ -3,12 +3,14 @@ from kinopoisk.movie import Movie
 
 class KinopoiskClient:
     def __init__(self):
-        self.movie = Movie()
+        pass
 
     def search_movie(self, title_query: str) -> (str, str, str):
+        movie = Movie()
+
         err_response = lambda x: (None, None, x)
         try:
-            movies = self.movie.objects.search(title_query)
+            movies = movie.objects.search(title_query)
             if len(movies) == 0:
                 return err_response('No matches')
 
