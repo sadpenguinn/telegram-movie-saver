@@ -1,24 +1,24 @@
 # telegram-movie-saver
 
-### Description
+## Description
 
 Bot accept messages with film names,
 scraps info about film from IMDb and Kinopoisk
 and store it in Notion database.
 
-### Dependencies
+## Dependencies
 
-##### Telegram Bot
+### Telegram Bot
 
 Provide it's token with `TELEGRAM_BOT_TOKEN`
 
-##### Python libs
+### Python libs
 
 ```
 pip3 install -r requirements.txt
 ```
 
-##### Notion Database
+### Notion Database
 
 Schema should fit next requirements
 
@@ -36,7 +36,7 @@ Schema should fit next requirements
 | Avg Rating       | float        |
 | Technical Tags   | multi-select |
 
-### Build & Run
+## Build & Run
 
 ```
 python3 main.py
