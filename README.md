@@ -33,6 +33,6 @@ Schema should fit next requirements:
 ## Build & Run
 
 ```
-docker build -t telegram-movie-saver -f Dockerfile .
+docker build -t telegram-movie-saver -f Dockerfile . && \
 docker run -e TELEGRAM_BOT_TOKEN={your-bot-token} telegram-movie-saver
 ```
