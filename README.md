@@ -14,7 +14,7 @@ Provide it's token with `TELEGRAM_BOT_TOKEN`.
 
 ### Notion Database
 
-Schema should fit next requirements:
+Schema should fit following requirements:
 
 | Name             | Type         |
 |------------------|--------------|
